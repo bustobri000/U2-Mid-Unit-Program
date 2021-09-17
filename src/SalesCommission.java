@@ -18,10 +18,45 @@ Total Earnings: $1184.38
 
  */
 
+import javax.swing.*;
+import java.text.DecimalFormat;
+
 public class SalesCommission {
 
     public static void main(String[] args) {
+        //steal the declaration of independence
+        double hours = input("What is the hourly pay you toil away your life for in decimal form? (##.##)");
+        double rate = input("What is the hours you worked for also in decimal form? (##.##)");
 
+        double commission = input("What is the commission percent at subsequently as well in decimal form? (##.##)");
+        double totalSales = input("What is the total dollar amount of sales at which is also in decimal form? (####.##)");
+        //fail algebra IIx
+        double wage = wage(hours, rate);
+        double earnings= commissionSales(commission, totalSales);
+        //declare independence from ireland
+        double totalEarnings = totalEarnings(wage, earnings);
+        output(totalEarnings);
+    }
+
+    public static double input(String prompt){
+        return Double.parseDouble(JOptionPane.showInputDialog(prompt));
+    }
+
+    public static double commissionSales(double commission, double totalSales){
+        return totalSales * (commission / 100.0);
+    }
+
+    public static double wage(double hours, double rate){
+       return hours * rate;
+    }
+
+    public static double totalEarnings(double wage, double earnings){
+        return wage + earnings;
+    }
+
+    public static void output(double totalEarnings){
+        DecimalFormat round = new DecimalFormat("#,###.00");
+        JOptionPane.showMessageDialog(null, "Total Earnings: $" + round.format(totalEarnings));
     }
 
 }
